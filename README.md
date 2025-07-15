@@ -155,9 +155,7 @@ The color spread shows that tyre compound choice is heavily influenced by weathe
 
 * Wet compounds dominate in cooler, wetter conditions.
 
-### Experiement
-
-* How can we predict the optimal lap for a driver to pit during the Monaco Grand Prix based on external features and race conditions?
+#### How can we predict the optimal lap for a driver to pit during the Monaco Grand Prix based on external features and race conditions?
 
 In order to predict the optimal lap for a driver to pit during the Monaco Grand Prix, we aggregated stint-level race data, engineering several features that capture both driver behavior and external race conditions. By grouping data by Year, Driver, and Stint, and computing statistics like average lap times, lap time variability, stint degradation, track and air temperatures, humidity, and safety car periods, we created a detailed profile of each stint. And we also encoded categorical features such as the initial tire compound and tire era to help the model differentiate between tire types and eras that influence degradation rates.
 
@@ -207,7 +205,7 @@ Interestingly, the driver's change in position on their most recent lap (Positio
 
 Overall, these results indicate that a blend of stint progression, tire wear management, lap performance, and environmental factors provides a strong and reliable foundation for predicting optimal pit stops during a race.
 
-* How can we predict whether a pit stop will result in a positional gain within the five laps following the stop?
+#### How can we predict whether a pit stop will result in a positional gain within the five laps following the stop?
 
 Using the provided pit stop data, each driver's race was chronologically organized by sorting based on year, driver name, and lap number. We then detected pit stops by identifying where a driver's stint number incremented by one — a reliable indicator of a tire change or service event during a race. Isolated only the laps falling within this post-pit window and associated with a labeled outcome. We encoded the target variable into binary format: '1' for a positional gain and '0' for no gain.
 
