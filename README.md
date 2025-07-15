@@ -1,4 +1,4 @@
-### PIT STOP STRATEGY OPTIMIZATION IN FORUMLA 1
+# PIT STOP STRATEGY OPTIMIZATION IN FORUMLA 1
 
 In Formula 1 motorsport racing, a pit stop refers to a scheduled stop during the race where a driver pulls into the team’s pit box for services such as tire changes, minor repairs, 
 or front wing adjustments. While necessary, pit stops cause a temporary loss of track position as the car slows down, stops, and then rejoins the race. Therefore, the timing of a 
@@ -19,7 +19,7 @@ By leveraging features such as tire degradation, stint progression, compound typ
 stop decisions. Focusing on immediate post-pit track position changes enables teams to maximize clear-air opportunities, avoid traffic, and gain critical race advantages — an 
 especially valuable strategy at a circuit like Monaco, where even a single position gain can significantly impact the final outcome.
 
-# Dataset
+### Dataset
 
 The dataset for this project was constructed using FastF1 API, a Python library that provides access to official Formula 1 timing and session data. FastF1 allows extraction of 
 structured race information such as lap times, tire compounds, stint details, pit stops, and race positions, enabling detailed race analysis without needing full telemetry 
