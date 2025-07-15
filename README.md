@@ -1,6 +1,8 @@
 # PIT STOP STRATEGY OPTIMIZATION IN FORUMLA 1
 
-In Formula 1 motorsport racing, a pit stop refers to a scheduled stop during the race where a driver pulls into the team’s pit box for services such as tire changes, minor repairs, or front wing adjustments. While necessary, pit stops cause a temporary loss of track position as the car slows down, stops, and then rejoins the race. Therefore, the timing of a  pit stop can have a critical impact on a driver's race outcome. A well-timed pit stop not only minimizes time loss but can also create strategic opportunities for overtaking and gaining positions on track. On circuits like Monaco — where overtaking is notoriously difficult due to the narrow, twisting street layout — optimizing pit stop timing becomes even more crucial. Track position is often determined more by pit stop strategies than by raw on-track pace, making race strategy a key battleground for gaining or defending positions. The motivation for this project stems from the significant strategic impact of a precisely coordinated and effectively managed pit stop: even a small advantage gained during the pit window can be the difference between achieving a strong finish or becoming trapped behind slower competitors, severely limiting a driver’s race potential.
+In Formula 1 motorsport racing, a pit stop refers to a scheduled stop during the race where a driver pulls into the team’s pit box for services such as tire changes, minor repairs, or front wing adjustments. While necessary, pit stops cause a temporary loss of track position as the car slows down, stops, and then rejoins the race. Therefore, the timing of a  pit stop can have a critical impact on a driver's race outcome. A well-timed pit stop not only minimizes time loss but can also create strategic opportunities for overtaking and gaining positions on track. On circuits like Monaco — where overtaking is notoriously difficult due to the narrow, twisting street layout — optimizing pit stop timing becomes even more crucial. Track position is often determined more by pit stop strategies than by raw on-track pace, making race strategy a key battleground for gaining or defending positions. 
+
+The motivation for this project stems from the significant strategic impact of a precisely coordinated and effectively managed pit stop: even a small advantage gained during the pit window can be the difference between achieving a strong finish or becoming trapped behind slower competitors, severely limiting a driver’s race potential.
 
 To address this challenge, this project uses machine learning models trained on historical race data from the Monaco Grand Prix (2018–2024) for drivers from Ferrari, Mercedes, Red Bull, and McLaren — four of the top-performing teams in Formula 1. The provlem this project addresses is twofold:
 
@@ -69,10 +71,7 @@ These adjustments allow the models to consistently interpret tire performance an
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/e5097c72-a5c6-4041-8487-f751817fadc9" />
 
-In earlier years like 2019 and 2020:
-
-* There are more dips and recoveries in throttle application, especially around the swimming pool chicane and Rascasse.
-* This could suggest car balance issues or conservative exits (rear-end instability).
+In earlier years like 2019 and 2020, there are more dips and recoveries in throttle application, especially around the swimming pool chicane and Rascasse. This could suggest car balance issues or conservative exits (rear-end instability).
 
 Verstappen’s throttle control gives him the edge to:
 
@@ -80,25 +79,19 @@ Verstappen’s throttle control gives him the edge to:
 2.   Stay out until the pit window is clear (very useful at Monaco, where undercut is tough due to traffic)
 
 2023 was about total control since it started raining mid race — Max was never aggressive, always precise. The crisp braking means less front tire load and better entry 
-precision → confidence under braking, no lockups, which allowed to win the race.
+precision → **confidence under braking, no lockups, which allowed to win the race.**
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/4b45db0f-a2a6-4209-b418-9e503be2b9c0" />
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/81490ff3-9ac9-4036-b87d-d7ab0391407e" />
 
-1. Brake and throttle smoothness improve noticeably in 2022–2024, signaling Ferrari’s traction and stability improvements.
-
-2. 2024 stands out with one of the cleanest throttle and brake traces, possibly reflecting:
+Brake and throttle smoothness improve noticeably in 2022–2024, signaling Ferrari’s traction and stability improvements. 2024 stands out with one of the cleanest throttle and brake traces, possibly reflecting:
 
 *   Leclerc's continued driver maturity
 *   A more refined Ferrari package (power unit + chassis)
 *   Optimized energy recovery systems (ERS) allowing better deployment during acceleration zones
 
- But this is likely his best combination of grip, balance, and ERS deployment which led to him finally win the Monaco GP.
-
-3. Leclerc shows improving throttle discipline, especially from 2022–2024 → **key to tire preservation**.
-
-This helps extend the first stint — giving Ferrari options to time the stop optimally around Safety Cars or traffic gaps.
+But this is likely his best combination of grip, balance, and ERS deployment which led to him finally win the Monaco GP. Leclerc shows improving throttle discipline, especially from 2022–2024 → **key to tire preservation**. This helps extend the first stint — giving Ferrari options to time the stop optimally around Safety Cars or traffic gaps.
 
 <img width="686" height="470" alt="image" src="https://github.com/user-attachments/assets/fe309ff2-bfc7-4c52-a93e-4dc7916467eb" />
 
@@ -114,15 +107,15 @@ Overall, the number of neutralized laps can strongly influence race strategy —
 
 <img width="984" height="584" alt="image" src="https://github.com/user-attachments/assets/a5bcb39d-71ca-43b4-ac27-fe1b634e9128" />
 
-Soft tyres are mainly used for short stints, typically lasting 5 to 20 laps, prioritizing peak performance but wearing out quickly.
+* Soft tyres are mainly used for short stints, typically lasting 5 to 20 laps, prioritizing peak performance but wearing out quickly.
 
-Medium tyres show balanced usage, commonly lasting 10 to 40 laps, offering flexibility between aggressive and conservative strategies.
+* Medium tyres show balanced usage, commonly lasting 10 to 40 laps, offering flexibility between aggressive and conservative strategies.
 
-Hard tyres provide the longest lifespan, often lasting 30 to 50+ laps, ideal for minimizing pit stops and executing longer stints.
+* Hard tyres provide the longest lifespan, often lasting 30 to 50+ laps, ideal for minimizing pit stops and executing longer stints.
 
-Wet and Intermediate tyres are used situationally during changing weather, usually lasting 5 to 20 laps before conditions change.
+* Wet and Intermediate tyres are used situationally during changing weather, usually lasting 5 to 20 laps before conditions change.
 
-Majority of tyre stints occur between 5 and 30 laps, highlighting the importance of tyre management in race strategy.
+Majority of tyre stints occur between 5 and 30 laps, highlighting the importance of tyre management in race strategy. 
 
 The stacked distribution illustrates how different compounds dominate at different stages of tyre life: Soft early, Medium mid-range, Hard for endurance.
 
@@ -138,9 +131,7 @@ In the first few laps (lap 1–3) of a stint:
 
 After lap 3:
 
-
-*   All compounds stabilize, and LapTimeDelta gradually moves
-closer to zero or positive, meaning lap times become more consistent or slightly slower as tyres begin degrading.
+*   All compounds stabilize, and LapTimeDelta gradually moves closer to zero or positive, meaning lap times become more consistent or slightly slower as tyres begin degrading.
 
 Intermediate tyres recover very quickly after the initial laps, even faster than Dry compounds, indicating better performance as track conditions stabilize.
 
