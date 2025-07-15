@@ -167,17 +167,6 @@ A **Random Forest Regressor** was trained to predict the optimal pit lap using t
 
 <img width="784" height="384" alt="image" src="https://github.com/user-attachments/assets/610f611a-4e0e-4934-894d-9f80498ed26a" />
 
-	Driver	| Stint	| OptimalPitLap |	PredictedOptimalPitLap
-6	RAI	1	18.0	20
-51	HAM	3	31.0	30
-102	LEC	1	2.0	3
-13	VER	1	48.0	48
-65	RIC	2	65.0	65
-86	PER	3	54.0	44
-92	RUS	1	55.0	51
-0	ALO	1	20.0	23
-44	RIC	2	78.0	63
-110	SAI	1	2.0	3
 | Driver | Stint | OptimalPitLap | PredictedOptimalPitLap |
 | ------ | ----- | ------------- | ---------------------- |
 |   RAI  | 1	 |     18.0  	 |       20               |
@@ -218,3 +207,32 @@ Interestingly, the driver's change in position on their most recent lap (Positio
 
 Overall, these results indicate that a blend of stint progression, tire wear management, lap performance, and environmental factors provides a strong and reliable foundation for predicting optimal pit stops during a race.
 
+* How can we predict whether a pit stop will result in a positional gain within the five laps following the stop?
+
+Using the provided pit stop data, each driver's race was chronologically organized by sorting based on year, driver name, and lap number. We then detected pit stops by identifying where a driver's stint number incremented by one — a reliable indicator of a tire change or service event during a race. Isolated only the laps falling within this post-pit window and associated with a labeled outcome. We encoded the target variable into binary format: '1' for a positional gain and '0' for no gain.
+
+We first conducted **Logistic Regression** model, which achieved an overall accuracy of 80%, indicating that it could correctly classify whether a pit stop led to a gain or not in the majority of cases. However, the detailed performance revealed some class imbalance: the model performed better at identifying "No Gain" events (precision: 82%, recall: 91%) than "Gain" events (precision: 71%, recall: 52%). This suggests that while the model is quite good at recognizing when a pit stop does not help the driver gain positions, it is less confident when predicting a successful gain after a stop.
+
+The macro average F1-score of 0.73 indicates reasonable balance between classes, and the weighted average F1-score of 0.79 highlights strong overall model effectiveness given the class distribution.
+
+To further improve model performance in predicting whether a pit stop would lead to a positional gain, we apply hyperparameter tuning using GridSearchCV.
+
+We constructed a pipeline that first standardized the input features with a StandardScaler, and then applied LogisticRegression as the classifier. This pipeline approach ensured that feature scaling and model training were seamlessly integrated during each fold of cross-validation, preventing any data leakage.
+
+When evaluated on the test set, the tuned model achieved an overall accuracy of 82%, slightly higher than the previous model. More importantly, the precision and recall for the 'Gain' class improved notably. The precision for 'Gain' increased to 68% and recall rose to 74%, leading to a balanced F1-score of 71% for this challenging class. Meanwhile, the 'No Gain' class retained strong performance with a precision of 89% and a recall of 86%.
+
+The macro-averaged F1-score rose to 0.79, reflecting a better balance between the two classes compared to the earlier model. The weighted F1-score remained stable at 0.82, demonstrating that improvements for the minority class were achieved without sacrificing overall predictive strength.
+
+Next we conducted **Support Vector Machine** model that demonstrated strong performance on the test set, achieving an impressive overall accuracy of 91%. The model performed exceptionally well across both classes: for the 'No Gain' class, it achieved a precision of 95% and a recall of 93%, while for the 'Gain' class, precision reached 83% and recall rose to 87%. This translated into macro-averaged F1 and weighted F1 scores around 0.89 and 0.91 respectively, indicating excellent balance.
+
+To further improve this model's performance in predicting whether a pit stop would lead to a positional gain, we applied hyperparameter tuning using GridSearchCV here as well.
+
+The tuned SVM model achieved a remarkable overall accuracy of 92%. Precision and recall were very strong across both classes: for the 'No Gain' class, both precision and recall reached 95%, and for the 'Gain' class, precision and recall each achieved 87%. The macro-averaged F1 score improved to 0.91, and the weighted F1 score also stood at 0.92, indicating excellent balance between classes and strong overall predictive power.
+
+### Conclusion
+
+In conclusion, the predicting the optimal lap for a pit stop model's performance reflects the importance of a multifaceted approach to pit stop strategy prediction. Key features such as stint progression, tire wear, lap time consistency, and environmental factors, including temperature and humidity, significantly influence pit decisions. The model’s solid accuracy—highlighted by an R² score of 0.76 on the validation set—demonstrates its ability to predict optimal pit stops effectively, though the inherent variability in race conditions presents challenges. The results underscore that optimal pit timing is a complex, dynamic process driven by both race and environmental conditions.
+
+While  predicting whether a pit stop will result in a positional gain within the five laps following the stop, several machine learning models were evaluated, including Logistic Regression, Tuned Logistic Regression, Support Vector Machine (SVM), and Tuned SVM. While Logistic Regression provided a solid baseline, it was the tuned models that showed the most promise. The Tuned Logistic Regression model exhibited a good balance between precision and recall, with an F1 score of 0.79, but it was the Tuned SVM model that emerged as the best performer. With its optimized hyperparameters, the Tuned SVM achieved a high accuracy of 92% and a strong F1 score of 0.91, demonstrating its superior ability to predict positional gains with greater consistency and robustness across different data subsets. This suggests that the SVM model, especially when fine-tuned, is best suited for capturing the complex dynamics influencing pit stop outcomes.
+
+Future improvements could include dynamic race event inputs, and multi-driver interaction effects for even more race-adaptive pit strategies.
