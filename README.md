@@ -195,6 +195,19 @@ The model achieved strong performance, with an **R² score** of approximately **
 
 <img width="857" height="547" alt="image" src="https://github.com/user-attachments/assets/5b5060c0-ea32-4107-9223-b4d5fec728c9" />
 
+| Feature               | Importance |
+|------------------------|------------|
+| StintLength            | 0.163011   |
+| StintLengthSoFar_max   | 0.112951   |
+| AirTemp_mean           | 0.095136   |
+| LapTime(s)_mean        | 0.092061   |
+| PositionDelta_last     | 0.087613   |
+| TrackTemp_mean         | 0.074921   |
+| TyreLife_max           | 0.069696   |
+| TyreLifeRatio          | 0.069257   |
+| Humidity_mean          | 0.069185   |
+| Rain_sum               | 0.043841   |
+
 <img width="777" height="934" alt="image" src="https://github.com/user-attachments/assets/7e25f8ee-35b6-4e53-b9c2-3183017660b6" />
 
 Identifying the feature importances reveals that the length of the current stint (StintLength) is the most critical factor in determining the optimal pit stop timing. This suggests that the distance covered during a stint strongly influences when a driver should ideally pit. Following that, the maximum stint length observed so far (StintLengthSoFar_max) also plays a significant role, highlighting how the cumulative load on the tires and car over the race affects pit strategy decisions.
