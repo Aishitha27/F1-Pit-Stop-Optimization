@@ -155,7 +155,29 @@ The color spread shows that tyre compound choice is heavily influenced by weathe
 
 * Wet compounds dominate in cooler, wetter conditions.
 
+### Experiement
 
+* How can we predict the optimal lap for a driver to pit during the Monaco Grand Prix based on external features and race conditions?
 
+In order to predict the optimal lap for a driver to pit during the Monaco Grand Prix, we aggregated stint-level race data, engineering several features that capture both driver behavior and external race conditions. By grouping data by Year, Driver, and Stint, and computing statistics like average lap times, lap time variability, stint degradation, track and air temperatures, humidity, and safety car periods, we created a detailed profile of each stint. And we also encoded categorical features such as the initial tire compound and tire era to help the model differentiate between tire types and eras that influence degradation rates.
 
+The target variable, OptimalPitLap, was defined as the lap immediately following the end of a stint, reflecting the logical point where a driver would typically pit under normal race conditions. 
+
+A **Random Forest Regressor** was trained to predict the optimal pit lap using these engineered features. The data was split into 70% train and 30% temp which was was further split into 15% validation and 15% test.
+
+<img width="784" height="384" alt="image" src="https://github.com/user-attachments/assets/610f611a-4e0e-4934-894d-9f80498ed26a" />
+
+The model achieved strong performance, with an **R² score** of approximately **0.76** on the validation set and 0.46 on the test set. The **Root Mean Squared Error (RMSE)** was **11.20 laps** on validation data and **12.01 laps** on unseen test data, while the **Mean Absolute Error (MAE)** was 6.77 and 6.16 laps respectively. These results suggest that the model can predict the optimal pit stop lap with reasonable accuracy, especially considering the variability and unpredictability inherent in race conditions.
+
+<img width="857" height="547" alt="image" src="https://github.com/user-attachments/assets/5b5060c0-ea32-4107-9223-b4d5fec728c9" />
+
+<img width="777" height="934" alt="image" src="https://github.com/user-attachments/assets/7e25f8ee-35b6-4e53-b9c2-3183017660b6" />
+
+Identifying the feature importances reveals that the length of the current stint (StintLength) is the most critical factor in determining the optimal pit stop timing. This suggests that the distance covered during a stint strongly influences when a driver should ideally pit. Following that, the maximum stint length observed so far (StintLengthSoFar_max) also plays a significant role, highlighting how the cumulative load on the tires and car over the race affects pit strategy decisions.
+
+Environmental factors continue to be important: the mean air temperature (AirTemp_mean) and the mean track temperature (TrackTemp_mean) are highly ranked. These variables impact tire degradation and overall car performance, indicating that changing atmospheric and track conditions heavily factor into pit decisions. The average lap time (LapTime(s)_mean) also emerged as a major contributor, suggesting that a driver’s consistent pace—or lack thereof—helps signal when a pit stop is necessary.
+
+Interestingly, the driver's change in position on their most recent lap (PositionDelta_last) showed strong influence, hinting that shifts in race competitiveness or overtaking dynamics could trigger strategy changes. Tire-related metrics such as maximum tire life (TyreLife_max) and tire life ratio (TyreLifeRatio) were also critical, reinforcing the importance of managing tire durability over a stint. Humidity (Humidity_mean) and rainfall (Rain_sum) completed the top ten, emphasizing that wet or humid conditions significantly alter the timing of optimal pit stops.
+
+Overall, these results indicate that a blend of stint progression, tire wear management, lap performance, and environmental factors provides a strong and reliable foundation for predicting optimal pit stops during a race.
 
