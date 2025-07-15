@@ -1,32 +1,20 @@
 # PIT STOP STRATEGY OPTIMIZATION IN FORUMLA 1
 
-In Formula 1 motorsport racing, a pit stop refers to a scheduled stop during the race where a driver pulls into the team’s pit box for services such as tire changes, minor repairs, 
-or front wing adjustments. While necessary, pit stops cause a temporary loss of track position as the car slows down, stops, and then rejoins the race. Therefore, the timing of a 
-pit stop can have a critical impact on a driver's race outcome. A well-timed pit stop not only minimizes time loss but can also create strategic opportunities for overtaking and 
-gaining positions on track. On circuits like Monaco — where overtaking is notoriously difficult due to the narrow, twisting street layout — optimizing pit stop timing becomes even 
-more crucial. Track position is often determined more by pit stop strategies than by raw on-track pace, making race strategy a key battleground for gaining or defending positions. 
-The motivation for this project stems from the significant strategic impact of a precisely coordinated and effectively managed pit stop: even a small advantage gained during the 
-pit window can be the difference between achieving a strong finish or becoming trapped behind slower competitors, severely limiting a driver’s race potential.
+In Formula 1 motorsport racing, a pit stop refers to a scheduled stop during the race where a driver pulls into the team’s pit box for services such as tire changes, minor repairs, or front wing adjustments. While necessary, pit stops cause a temporary loss of track position as the car slows down, stops, and then rejoins the race. Therefore, the timing of a  pit stop can have a critical impact on a driver's race outcome. A well-timed pit stop not only minimizes time loss but can also create strategic opportunities for overtaking and gaining positions on track. On circuits like Monaco — where overtaking is notoriously difficult due to the narrow, twisting street layout — optimizing pit stop timing becomes even more crucial. Track position is often determined more by pit stop strategies than by raw on-track pace, making race strategy a key battleground for gaining or defending positions. The motivation for this project stems from the significant strategic impact of a precisely coordinated and effectively managed pit stop: even a small advantage gained during the pit window can be the difference between achieving a strong finish or becoming trapped behind slower competitors, severely limiting a driver’s race potential.
 
-To address this challenge, this project uses machine learning models trained on historical race data from the Monaco Grand Prix (2018–2024) for drivers from Ferrari, Mercedes, 
-Red Bull, and McLaren — four of the top-performing teams in Formula 1. The provlem this project addresses is twofold:
+To address this challenge, this project uses machine learning models trained on historical race data from the Monaco Grand Prix (2018–2024) for drivers from Ferrari, Mercedes, Red Bull, and McLaren — four of the top-performing teams in Formula 1. The provlem this project addresses is twofold:
 
 1. ***Optimal Pit Lap Prediction:*** Estimating the most advantageous lap for executing a pit stop based on tire wear patterns, stint dynamics, and race conditions.
 
 2. ***Short-Term Position Gain Prediction:*** Classifying whether a pit stop at a given lap will result in a net positional gain within a 5-lap window after the stop.
 
-By leveraging features such as tire degradation, stint progression, compound type, lap pace trends, and safety car periods, the models aim to provide data-driven support for pit 
-stop decisions. Focusing on immediate post-pit track position changes enables teams to maximize clear-air opportunities, avoid traffic, and gain critical race advantages — an 
-especially valuable strategy at a circuit like Monaco, where even a single position gain can significantly impact the final outcome.
+By leveraging features such as tire degradation, stint progression, compound type, lap pace trends, and safety car periods, the models aim to provide data-driven support for pit stop decisions. Focusing on immediate post-pit track position changes enables teams to maximize clear-air opportunities, avoid traffic, and gain critical race advantages — an especially valuable strategy at a circuit like Monaco, where even a single position gain can significantly impact the final outcome.
 
 ### Dataset
 
-The dataset for this project was constructed using FastF1 API, a Python library that provides access to official Formula 1 timing and session data. FastF1 allows extraction of 
-structured race information such as lap times, tire compounds, stint details, pit stops, and race positions, enabling detailed race analysis without needing full telemetry 
-(such as throttle, brake, or steering data).
+The dataset for this project was constructed using FastF1 API, a Python library that provides access to official Formula 1 timing and session data. FastF1 allows extraction of structured race information such as lap times, tire compounds, stint details, pit stops, and race positions, enabling detailed race analysis without needing full telemetry (such as throttle, brake, or steering data).
 
-This project focuses on data just from the Monaco Grand Prix across six seasons (2018 to 2024), specifically for drivers from four teams: Ferrari, Mercedes, Red Bull, and McLaren. 
-The data includes one record per completed lap by each driver, summarizing critical race attributes relevant to pit stop strategy.
+This project focuses on data just from the Monaco Grand Prix across six seasons (2018 to 2024), specifically for drivers from four teams: Ferrari, Mercedes, Red Bull, and McLaren. The data includes one record per completed lap by each driver, summarizing critical race attributes relevant to pit stop strategy.
 
 **Key Features Include:**
 
@@ -74,6 +62,8 @@ Starting in 2019, Formula 1 introduced new tire regulations, reducing the number
 *   **TireEra** identifies whether each lap belongs to the PreUnified (2018) or Unified (2019–2024) tire regulation era.
 
 These adjustments allow the models to consistently interpret tire performance and degradation patterns across seasons with different tire rule frameworks.
+
+### Exploratory Data Analysis
 
 <img width="1389" height="490" alt="image" src="https://github.com/user-attachments/assets/71bfae34-6e86-48a1-b65a-4d7f9a9296df" />
 
