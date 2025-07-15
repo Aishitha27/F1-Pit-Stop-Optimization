@@ -167,6 +167,19 @@ A **Random Forest Regressor** was trained to predict the optimal pit lap using t
 
 <img width="784" height="384" alt="image" src="https://github.com/user-attachments/assets/610f611a-4e0e-4934-894d-9f80498ed26a" />
 
+	Driver	| Stint	| OptimalPitLap |	PredictedOptimalPitLap
+6	RAI	1	18.0	20
+51	HAM	3	31.0	30
+102	LEC	1	2.0	3
+13	VER	1	48.0	48
+65	RIC	2	65.0	65
+86	PER	3	54.0	44
+92	RUS	1	55.0	51
+0	ALO	1	20.0	23
+44	RIC	2	78.0	63
+110	SAI	1	2.0	3
+
+
 The model achieved strong performance, with an **R² score** of approximately **0.76** on the validation set and 0.46 on the test set. The **Root Mean Squared Error (RMSE)** was **11.20 laps** on validation data and **12.01 laps** on unseen test data, while the **Mean Absolute Error (MAE)** was 6.77 and 6.16 laps respectively. These results suggest that the model can predict the optimal pit stop lap with reasonable accuracy, especially considering the variability and unpredictability inherent in race conditions.
 
 <img width="857" height="547" alt="image" src="https://github.com/user-attachments/assets/5b5060c0-ea32-4107-9223-b4d5fec728c9" />
